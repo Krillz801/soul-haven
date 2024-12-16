@@ -1,0 +1,55 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-purple-50">
+    <ActionBar title="Weekly Review" class="bg-purple-600 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <!-- Week Overview -->
+            <Label text="{{ weekRange }}" class="text-xl text-purple-800 font-bold text-center" />
+            
+            <!-- Mood Chart -->
+            <Label text="Mood Trends" class="text-lg text-purple-800 font-bold mt-4" />
+            <GridLayout rows="200" columns="*" class="bg-white rounded-lg p-4">
+                <!-- Chart placeholder - implement with chart library -->
+                <Label text="Mood visualization will be here" class="text-center text-purple-600" />
+            </GridLayout>
+
+            <!-- Improvements -->
+            <Label text="Your Improvements" class="text-lg text-purple-800 font-bold mt-4" />
+            <ListView items="{{ weeklyHighlight.improvements }}" height="120" class="bg-white rounded-lg">
+                <ListView.itemTemplate>
+                    <Label text="{{ '✨ ' + $value }}" class="p-2 text-purple-700" textWrap="true" />
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Challenges -->
+            <Label text="Challenges Faced" class="text-lg text-purple-800 font-bold mt-4" />
+            <ListView items="{{ weeklyHighlight.challenges }}" height="120" class="bg-white rounded-lg">
+                <ListView.itemTemplate>
+                    <Label text="{{ '💪 ' + $value }}" class="p-2 text-purple-700" textWrap="true" />
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Insights -->
+            <Label text="Weekly Insights" class="text-lg text-purple-800 font-bold mt-4" />
+            <ListView items="{{ weeklyHighlight.insights }}" height="120" class="bg-white rounded-lg">
+                <ListView.itemTemplate>
+                    <Label text="{{ '💡 ' + $value }}" class="p-2 text-purple-700" textWrap="true" />
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Goals -->
+            <Label text="Goals for Next Week" class="text-lg text-purple-800 font-bold mt-4" />
+            <ListView items="{{ weeklyHighlight.goalsForNextWeek }}" height="120" class="bg-white rounded-lg">
+                <ListView.itemTemplate>
+                    <Label text="{{ '🎯 ' + $value }}" class="p-2 text-purple-700" textWrap="true" />
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Generate Report Button -->
+            <Button text="Generate New Weekly Review" tap="{{ generateWeeklyHighlight }}" 
+                    class="bg-purple-600 text-white font-bold py-3 rounded-lg mt-4" />
+        </StackLayout>
+    </ScrollView>
+</Page>

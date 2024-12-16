@@ -1,0 +1,67 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-purple-50">
+    <ActionBar title="Monthly Review" class="bg-purple-600 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <!-- Month Overview -->
+            <Label text="{{ monthYear }}" class="text-xl text-purple-800 font-bold text-center" />
+
+            <!-- Emotional Trends -->
+            <Label text="Emotional Trends" class="text-lg text-purple-800 font-bold mt-4" />
+            <StackLayout class="bg-white rounded-lg p-4">
+                <Label text="Dominant Emotions:" class="text-purple-700 font-bold" />
+                <ListView items="{{ monthlyReview.emotionalTrends.dominantEmotions }}" height="80">
+                    <ListView.itemTemplate>
+                        <Label text="{{ '• ' + $value }}" class="p-1 text-purple-600" />
+                    </ListView.itemTemplate>
+                </ListView>
+                
+                <Label text="Mood Range:" class="text-purple-700 font-bold mt-2" />
+                <Label text="{{ 'Average: ' + monthlyReview.emotionalTrends.moodRange.average }}" 
+                       class="text-purple-600" />
+            </StackLayout>
+
+            <!-- Significant Patterns -->
+            <Label text="Patterns & Progress" class="text-lg text-purple-800 font-bold mt-4" />
+            <StackLayout class="bg-white rounded-lg p-4">
+                <Label text="Common Triggers:" class="text-purple-700 font-bold" />
+                <ListView items="{{ monthlyReview.significantPatterns.triggers }}" height="80">
+                    <ListView.itemTemplate>
+                        <Label text="{{ '⚡ ' + $value }}" class="p-1 text-purple-600" />
+                    </ListView.itemTemplate>
+                </ListView>
+
+                <Label text="Effective Coping Strategies:" class="text-purple-700 font-bold mt-2" />
+                <ListView items="{{ monthlyReview.significantPatterns.copingStrategies }}" height="80">
+                    <ListView.itemTemplate>
+                        <Label text="{{ '✨ ' + $value }}" class="p-1 text-purple-600" />
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <!-- Personal Growth -->
+            <Label text="Personal Growth" class="text-lg text-purple-800 font-bold mt-4" />
+            <StackLayout class="bg-white rounded-lg p-4">
+                <Label text="Achievements:" class="text-purple-700 font-bold" />
+                <ListView items="{{ monthlyReview.personalGrowth.achievements }}" height="80">
+                    <ListView.itemTemplate>
+                        <Label text="{{ '🏆 ' + $value }}" class="p-1 text-purple-600" />
+                    </ListView.itemTemplate>
+                </ListView>
+
+                <Label text="Key Insights:" class="text-purple-700 font-bold mt-2" />
+                <ListView items="{{ monthlyReview.personalGrowth.insights }}" height="80">
+                    <ListView.itemTemplate>
+                        <Label text="{{ '💡 ' + $value }}" class="p-1 text-purple-600" />
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+
+            <!-- Generate Report Button -->
+            <Button text="Generate New Monthly Review" tap="{{ generateMonthlyReview }}" 
+                    class="bg-purple-600 text-white font-bold py-3 rounded-lg mt-4" />
+        </StackLayout>
+    </ScrollView>
+</Page>

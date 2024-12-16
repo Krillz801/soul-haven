@@ -1,0 +1,37 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-purple-50">
+    <ActionBar title="Soul Haven" class="bg-purple-600 text-white">
+        <ActionItem tap="{{ toggleInnerChildMode }}" ios.position="right" android.position="actionBar">
+            <Label text="{{ isInnerChildMode ? '🧸' : '📝' }}" class="text-2xl" />
+        </ActionItem>
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <!-- Mood Check -->
+            <Label text="How are you feeling today?" class="text-xl text-purple-800 font-bold" />
+            <Slider value="{{ currentMood }}" minValue="1" maxValue="10" class="m-2" />
+            <Label text="{{ 'Current mood: ' + currentMood }}" class="text-center text-purple-600" />
+
+            <!-- AI-Generated Support Message -->
+            <Label text="{{ supportMessage }}" textWrap="true" 
+                   class="text-lg text-purple-700 p-4 bg-purple-100 rounded-lg" />
+
+            <!-- Journal Entry -->
+            <TextView hint="Share your thoughts and feelings..." text="{{ currentEntry }}" 
+                     class="bg-white p-4 rounded-lg h-40 text-purple-900" />
+
+            <!-- Supportive Prompt -->
+            <Label text="{{ currentPrompt }}" textWrap="true" 
+                   class="text-lg text-purple-700 p-4 bg-purple-100 rounded-lg" />
+
+            <!-- Self-Soothing Suggestion -->
+            <Label text="Try this:" class="text-lg font-bold text-purple-800" />
+            <Label text="{{ soothingActivity }}" textWrap="true" 
+                   class="text-purple-700 bg-purple-100 p-4 rounded-lg" />
+
+            <!-- Save Button -->
+            <Button text="Save Entry" tap="{{ addEntry }}" 
+                    class="bg-purple-600 text-white font-bold py-2 rounded-lg" />
+        </StackLayout>
+    </ScrollView>
+</Page>

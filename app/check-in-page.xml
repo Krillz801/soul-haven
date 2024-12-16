@@ -1,0 +1,71 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="navigatingTo" class="bg-purple-50">
+    <ActionBar title="Daily Check-in" class="bg-purple-600 text-white">
+        <NavigationButton text="Back" android.systemIcon="ic_menu_back" />
+    </ActionBar>
+
+    <ScrollView>
+        <StackLayout class="p-4 space-y-4">
+            <!-- Mood Section -->
+            <Label text="How are you feeling today?" class="text-xl text-purple-800 font-bold" />
+            <GridLayout rows="auto" columns="auto,*,auto" class="items-center">
+                <Label text="😔" col="0" class="text-2xl" />
+                <Slider value="{{ currentCheckIn.mood }}" minValue="1" maxValue="10" 
+                        col="1" class="m-2" />
+                <Label text="😊" col="2" class="text-2xl" />
+            </GridLayout>
+            <Label text="{{ 'Mood: ' + currentCheckIn.mood }}" class="text-center text-purple-600" />
+
+            <!-- Energy Level -->
+            <Label text="Energy Level" class="text-xl text-purple-800 font-bold mt-4" />
+            <GridLayout rows="auto" columns="auto,*,auto" class="items-center">
+                <Label text="🔋" col="0" class="text-2xl" />
+                <Slider value="{{ currentCheckIn.energyLevel }}" minValue="1" maxValue="10" 
+                        col="1" class="m-2" />
+                <Label text="⚡" col="2" class="text-2xl" />
+            </GridLayout>
+
+            <!-- Sleep Quality -->
+            <Label text="Sleep Quality" class="text-xl text-purple-800 font-bold mt-4" />
+            <GridLayout rows="auto" columns="auto,*,auto" class="items-center">
+                <Label text="😴" col="0" class="text-2xl" />
+                <Slider value="{{ currentCheckIn.sleepQuality }}" minValue="1" maxValue="10" 
+                        col="1" class="m-2" />
+                <Label text="💤" col="2" class="text-2xl" />
+            </GridLayout>
+
+            <!-- Gratitude Section -->
+            <Label text="What are you grateful for today?" class="text-xl text-purple-800 font-bold mt-4" />
+            <TextView hint="{{ gratitudePrompts[0] }}" text="{{ currentGratitude }}" 
+                     class="bg-white p-4 rounded-lg" height="80" />
+            <Button text="Add Gratitude" tap="{{ addGratitude }}" 
+                    class="bg-purple-600 text-white font-bold py-2 rounded-lg" />
+
+            <!-- Activities -->
+            <Label text="Activities that helped today:" class="text-xl text-purple-800 font-bold mt-4" />
+            <ListView items="{{ suggestedActivities }}" height="120" class="bg-white rounded-lg">
+                <ListView.itemTemplate>
+                    <Label text="{{ $value }}" class="p-2 text-purple-700" textWrap="true" />
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Challenges -->
+            <Label text="Any challenges today?" class="text-xl text-purple-800 font-bold mt-4" />
+            <TextView hint="Share your challenges..." text="{{ currentChallenge }}" 
+                     class="bg-white p-4 rounded-lg" height="80" />
+            <Button text="Add Challenge" tap="{{ addChallenge }}" 
+                    class="bg-purple-600 text-white font-bold py-2 rounded-lg" />
+
+            <!-- Coping Strategies Used -->
+            <Label text="Coping strategies that helped:" class="text-xl text-purple-800 font-bold mt-4" />
+            <ListView items="{{ currentCheckIn.copingStrategies }}" height="120" class="bg-white rounded-lg">
+                <ListView.itemTemplate>
+                    <Label text="{{ $value }}" class="p-2 text-purple-700" textWrap="true" />
+                </ListView.itemTemplate>
+            </ListView>
+
+            <!-- Save Button -->
+            <Button text="Save Check-in" tap="{{ saveCheckIn }}" 
+                    class="bg-purple-600 text-white font-bold py-3 rounded-lg mt-4" />
+        </StackLayout>
+    </ScrollView>
+</Page>

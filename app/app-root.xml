@@ -1,0 +1,18 @@
+<Frame defaultPage="main-page">
+    <TabView androidTabsPosition="bottom" selectedIndex="0" class="bg-purple-50">
+        <TabView.items>
+            <TabViewItem title="Journal" iconSource="res://journal">
+                <Frame defaultPage="main-page" />
+            </TabViewItem>
+            <TabViewItem title="Check-in" iconSource="res://checkin">
+                <Frame defaultPage="check-in-page" />
+            </TabViewItem>
+            <TabViewItem title="Weekly" iconSource="res://weekly">
+                <Frame defaultPage="weekly-review-page" />
+            </TabViewItem>
+            <TabViewItem title="Monthly" iconSource="res://monthly">
+                <Frame defaultPage="monthly-review-page" />
+            </TabViewItem>
+        </TabView.items>
+    </TabView>
+</Frame>

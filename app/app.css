@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Page {
+  background-color: #faf5ff;
+}
+
+.text-purple-primary {
+  color: #7c3aed;
+}
+
+.bg-purple-primary {
+  background-color: #7c3aed;
+}
+
+TextView {
+  border-width: 1;
+  border-color: #e9d5ff;
+  border-radius: 8;
+  padding: 12;
+  margin: 8 0;
+}
+
+Slider {
+  color: #7c3aed;
+}
